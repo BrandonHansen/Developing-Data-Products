@@ -1,0 +1,59 @@
+---
+title: "Comparing Motor Vehicles"
+author: "Brandon Hansen"
+date: "8/7/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Application Pitch
+
+This application allows the user to easily compare between different motor vehicles and allows them too
+
+- Gain insights into different motor vehicle correlations
+- Do exploratory data analysis on motor vehicles
+- Plan out future classification and regression tasks for motor vehicles
+
+## Functionality Part One
+
+The application displays a plot with motor vehicles being compared by weight and MPG.
+
+```{r echo=FALSE}
+plot(mtcars$wt, mtcars$mpg, xlab="Weight", ylab="MPG")
+```
+
+
+## Functionality Part Two
+
+The application analyses can be divided between automatic and manual transmission vehicles through parameter selection.
+
+```{r echo=FALSE}
+auto <- subset(mtcars, am == 0)
+manl <- subset(mtcars, am == 1)
+plot(auto$wt, auto$mpg, col="red", xlab="Weight", ylab="MPG")
+points(manl$wt, manl$mpg, col="blue")
+```
+
+## Functionality Part Three
+
+Analysis can be further divided between individual cylinders to compare performance versus weight in automatic and manual vehicles.
+
+```{r}
+auto4 <- subset(mtcars, am == 0 & cyl == 4)
+manl4 <- subset(mtcars, am == 1 & cyl == 4)
+auto6 <- subset(mtcars, am == 0 & cyl == 6)
+manl6 <- subset(mtcars, am == 1 & cyl == 6)
+auto8 <- subset(mtcars, am == 0 & cyl == 8)
+manl8 <- subset(mtcars, am == 1 & cyl == 8)
+par(mfrow=c(2,2))
+plot(auto4$wt, auto4$mpg, col="red", xlab="Weight", ylab="MPG")
+points(manl4$wt, manl4$mpg, col="blue", xlab="Weight", ylab="MPG")
+plot(auto6$wt, auto6$mpg, col="red", xlab="Weight", ylab="MPG")
+points(manl6$wt, manl6$mpg, col="blue", xlab="Weight", ylab="MPG")
+plot(auto8$wt, auto8$mpg, col="red", xlab="Weight", ylab="MPG")
+points(manl8$wt, manl8$mpg, col="blue", xlab="Weight", ylab="MPG")
+```
+
